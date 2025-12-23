@@ -1,0 +1,35 @@
+# ========================================
+# ROOT . gitignore for TCGStore Monorepo
+# ========================================
+
+# IDEs
+.idea/
+.vscode/
+*. iml
+*.iws
+*. ipr
+
+# OS files
+. DS_Store
+Thumbs. db
+desktop.ini
+
+# Logs
+*. log
+logs/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Environment variables
+.env
+. env.local
+
+# Build artifacts
+**/target/
+**/build/
+**/dist/
+**/node_modules/
