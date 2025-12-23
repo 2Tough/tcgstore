@@ -2,7 +2,7 @@
 
 > E-commerce platform for trading card games built with Spring Boot & React
 
-![Java](https://img.shields.io/badge/Java-17-orange? style=flat-square&logo=openjdk)
+![Java](https://img.shields.io/badge/Java-17-orange?style=flat-square&logo=openjdk)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen?style=flat-square&logo=springboot)
 ![React](https://img.shields.io/badge/React-18-blue?style=flat-square&logo=react)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?style=flat-square&logo=mysql)
