@@ -1,7 +1,9 @@
 package dev.twotough.springlab.tcgstore.config;
 
 import dev.twotough.springlab.tcgstore.model.Card;
+import dev.twotough.springlab.tcgstore.model.User;
 import dev.twotough.springlab.tcgstore.repository.CardRepository;
+import dev.twotough.springlab.tcgstore.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -11,9 +13,11 @@ import java.math.BigDecimal;
 public class DataLoader implements CommandLineRunner {
 
     private final CardRepository cardRepository;
+    private final UserRepository userRepository;
 
-    public DataLoader(CardRepository cardRepository) {
+    public DataLoader(CardRepository cardRepository, UserRepository userRepository) {
         this.cardRepository = cardRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -39,10 +43,18 @@ public class DataLoader implements CommandLineRunner {
 
             cardRepository.save(c1);
             cardRepository.save(c2);
+        }
 
-            System.out.println("Seeded cards: " + cardRepository.count());
-        } else {
-            System.out.println("Cards already present: " + cardRepository.count());
+        if (userRepository.count() == 0) {
+            User u = new User();
+            u.setUsername("demo");
+            u.setEmail("demo@example.com");
+            u.setPassword("changeme");
+            u.setFirstName("Demo");
+            u.setLastName("User");
+            // role and createdAt will be set by @PrePersist in User
+            userRepository.save(u);
+            System.out.println("Seeded demo user id=" + u.getId());
         }
     }
 }

@@ -1,13 +1,11 @@
 package dev.twotough.springlab.tcgstore.dto;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
@@ -15,11 +13,13 @@ import java.util.List;
 @AllArgsConstructor
 public class AddToCartRequest {
 
-    private Long id;
-
+    @NotNull
     private Long userId;
 
-    private List<CartItemDto> items = new ArrayList<>();
+    @NotNull
+    private Long cardId;
 
-    private BigDecimal quantity;
+    @NotNull
+    @Min(value = 1, message = "quantity must be at least 1")
+    private Integer quantity;
 }
