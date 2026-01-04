@@ -18,6 +18,12 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public Optional<User> getByUsername(String username) {
+
+        return userRepository.findByUsername(username);
+
+    }
+
     public Optional<User> getById(Long id) {
         return userRepository.findById(id);
     }

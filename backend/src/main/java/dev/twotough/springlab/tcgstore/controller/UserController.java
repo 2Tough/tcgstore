@@ -13,18 +13,27 @@ public class UserController {
 
     private final UserService userService;
 
-    // Crear usuario (simple). En producción usar DTOs y validación.
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
+        // TODO: Añade validación simple
+        if (user.getUsername() == null || user.getUsername().isEmpty()) {
+            return ResponseEntity. badRequest().build();
+        }
         User saved = userService.createUser(user);
-        return ResponseEntity.ok(saved);
+        return ResponseEntity. status(201).body(saved);  // 201 en lugar de 200
     }
 
-    // Obtener usuario por id
     @GetMapping("/{id}")
     public ResponseEntity<User> getById(@PathVariable Long id) {
         return userService.getById(id)
-                .map(ResponseEntity::ok)
+                .map(ResponseEntity:: ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/by-username")
+    public ResponseEntity<User> getByUsername(@RequestParam String username) {
+        return userService.getByUsername(username)
+                .map(ResponseEntity:: ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
