@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,4 +59,16 @@ public class Cart {
         this.items.remove(item);
 
     }
+
+    public List<CartItem> getItems() {
+        return items!=null?items:new ArrayList<>() ;
+    }
+
+    public BigDecimal getTotal(){
+        return getItems().stream()
+                .map(item -> item.getCard().getPrice().multiply(BigDecimal.valueOf(item.getQuantity())))
+                .reduce(BigDecimal. ZERO, BigDecimal::add);
+    }
+
+
 }

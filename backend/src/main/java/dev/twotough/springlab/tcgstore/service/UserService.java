@@ -3,6 +3,7 @@ package dev.twotough.springlab.tcgstore.service;
 import dev.twotough.springlab.tcgstore.model.User;
 import dev.twotough.springlab.tcgstore.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,9 +13,12 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public User createUser(User user) {
         // En producción: validar, encriptar password, dto -> entidad
+        String EncriptedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(EncriptedPassword);
         return userRepository.save(user);
     }
 
