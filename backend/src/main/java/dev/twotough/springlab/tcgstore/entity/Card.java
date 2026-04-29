@@ -1,11 +1,11 @@
 package dev.twotough.springlab.tcgstore.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "cards")
@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class Card {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;  // "swsh3-136" — usamos el ID de TCGDex directamente
     private String game;           // "Pokemon", "Magic", "Yugioh"
 
@@ -36,6 +37,9 @@ public class Card {
     // Tipos y debilidades como texto simple por ahora
     private String types;          // "Colorless"
     private String weaknesses;     // "Fighting ×2"
+
+    private Integer stock;
+    private BigDecimal price;
 
     // Precio (no viene de la API, lo manejas tú)
     // private Double price;

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import dev.twotough.springlab.tcgstore.entity.Card;
 
 @Entity
 @Table(name = "cart_items")

@@ -6,7 +6,7 @@ import dev.twotough.springlab.tcgstore.exception.InsufficientStockException;
 import dev.twotough.springlab.tcgstore.exception.ResourceNotFoundException;
 import dev.twotough.springlab.tcgstore.model.Cart;
 import dev.twotough.springlab.tcgstore.model.CartItem;
-import dev.twotough.springlab.tcgstore.model.Card;
+import dev.twotough.springlab.tcgstore.entity.Card;
 import dev.twotough.springlab.tcgstore.model.User;
 import dev.twotough.springlab.tcgstore.repository.CartItemRepository;
 import dev.twotough.springlab.tcgstore.repository.CartRepository;

@@ -1,6 +1,6 @@
 package dev.twotough.springlab.tcgstore.controller;
 
-import dev.twotough.springlab.tcgstore.model.Card;
+import dev.twotough.springlab.tcgstore.entity.Card;
 import dev.twotough.springlab.tcgstore.service.CardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

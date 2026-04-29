@@ -1,6 +1,6 @@
 package dev.twotough.springlab.tcgstore.service;
 
-import dev.twotough.springlab.tcgstore.model.Card;
+import dev.twotough.springlab.tcgstore.entity.Card;
 import dev.twotough.springlab.tcgstore.repository.CardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
