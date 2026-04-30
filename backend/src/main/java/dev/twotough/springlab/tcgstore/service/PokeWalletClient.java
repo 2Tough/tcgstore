@@ -1,5 +1,6 @@
 package dev.twotough.springlab.tcgstore.service;
 
+import dev.twotough.springlab.tcgstore.dto.PokeWalletSearchResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -13,20 +14,13 @@ public class PokeWalletClient {
         this.webClient = webClient;
     }
 
-    public Mono<String> searchCards(String query) {
+    public Mono<PokeWalletSearchResponse> searchCards(String query) {
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/search")
                         .queryParam("q", query)
                         .build())
                 .retrieve()
-                .onStatus(
-                        status -> status.is4xxClientError() || status.is5xxServerError(),
-                        response -> response.bodyToMono(String.class)
-                                .flatMap(body -> Mono.error(new RuntimeException(
-                                        "Pokewallet error " + response.statusCode() + ": " + body
-                                )))
-                )
-                .bodyToMono(String.class);
+                .bodyToMono(PokeWalletSearchResponse.class);
     }
 }
